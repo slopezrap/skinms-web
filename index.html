@@ -102,7 +102,7 @@
   /* ── teléfono CSS ── */
   .phone{width:min(310px,78vw);border-radius:46px;background:var(--qb-ink);padding:11px;
     box-shadow:0 26px 60px rgba(26,23,20,.20),0 6px 18px rgba(26,23,20,.10);margin:0 auto}
-  .phone img{display:block;width:100%;height:auto;border-radius:36px}
+  .phone img{display:block;width:100%;height:auto;border-radius:36px;background:#EFECE4;aspect-ratio:1080/2400}
   .phone.small{width:min(250px,70vw);border-radius:38px;padding:9px}
   .phone.small img{border-radius:30px}
   figcaption{margin-top:18px;font-size:.9rem;color:var(--qb-ink-soft);text-align:center;max-width:30em;margin-left:auto;margin-right:auto}
@@ -111,6 +111,8 @@
   .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
   @media (max-width:880px){.split{grid-template-columns:1fr;gap:44px}}
   .split .text{max-width:32em}
+  .duo{display:flex;gap:18px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+  .duo .phone.small{width:min(205px,42vw);margin:0}
 
   /* ══ LA FLOR — pieza central interactiva ══ */
   .bloomcard{background:rgba(255,255,255,.55);border:1px solid var(--qb-border);border-radius:30px;
@@ -213,7 +215,7 @@
     </ul>
   </div>
   <div class="hero-art rv">
-    <figure class="phone"><img src="assets/hoy.webp" alt="Pantalla Hoy de SkinMs: la rutina del día con cada paso explicado" width="1206" height="2622" fetchpriority="high"></figure>
+    <figure class="phone"><img src="assets/hoy.webp" alt="Pantalla Hoy de SkinMs: la rutina de Marta en Madrid, con UV alto y su deporte" width="1080" height="2400" fetchpriority="high"></figure>
     <button class="ms fab" id="fab" aria-label="Conoce a MaSer, el asistente de SkinMs">
       <svg class="orbit" viewBox="0 0 78 78" aria-hidden="true"><circle cx="39" cy="39" r="37"/></svg>
       <i>M<small>s</small></i>
@@ -240,6 +242,7 @@
           <small>no una nota del producto</small></span>
         <p class="bloomhint" id="bloomhint">La flor es la de verdad: así se va completando tu alta en la app.</p>
       </div>
+      <div>
       <div class="bloomstage" id="bloomstage">
         <svg viewBox="0 0 300 300" role="img" aria-label="La flor de SkinMs: nueve pétalos, una señal cada uno">
           <circle class="bloomhalo" cx="150" cy="150" r="128"/>
@@ -247,6 +250,11 @@
           <circle class="bloomcenter" cx="150" cy="150" r="34"/>
           <text class="bloomcount" id="bloomcount" x="150" y="156" text-anchor="middle">0/9</text>
         </svg>
+      </div>
+      <figure style="margin-top:34px">
+        <div class="phone small"><img src="assets/teconozco.webp" alt="El cierre del alta en la app: Te conozco, 13 de 13" width="1080" height="2400" loading="lazy"></div>
+        <figcaption>La de verdad, al final de tu alta: «cada pétalo es algo que me contaste».</figcaption>
+      </figure>
       </div>
     </div>
   </div>
@@ -256,9 +264,12 @@
 <section class="wrap" id="maser">
   <div class="split rv">
     <figure>
-      <div class="phone"><img src="assets/maser.webp" alt="MaSer rechazando añadir una crema por las alergias declaradas" width="1206" height="2147" loading="lazy"></div>
-      <figcaption>Conversación real: el motor rechaza una crema por las alergias declaradas
-      — níquel y fragancias — y ofrece buscar una alternativa segura.</figcaption>
+      <div class="duo">
+        <div class="phone small"><img src="assets/lupa.webp" alt="La Lupa: NIVEA Soft, no apta por la alergia a fragancia" width="1080" height="2400" loading="lazy"></div>
+        <div class="phone small"><img src="assets/maser.webp" alt="MaSer se niega a añadir la crema vetada" width="1080" height="2400" loading="lazy"></div>
+      </div>
+      <figcaption>La misma crema, dos veces no: la Lupa la veta por tu alergia, y al pedírsela a MaSer
+      responde «el motor de seguridad la ha bloqueado para ti» — y ofrece alternativa.</figcaption>
     </figure>
     <div class="text">
       <div class="kicker">
@@ -287,20 +298,20 @@
   </div>
   <div class="grid3">
     <figure class="rv">
-      <div class="phone small"><img src="assets/hoy.webp" alt="Pantalla Hoy" width="1206" height="2622" loading="lazy"></div>
-      <h3>Hoy</h3>
-      <p>Tu rutina cambia si cambia el tiempo, si haces deporte, si tu piel reacciona.
-      Cada paso, con su porqué.</p>
-    </figure>
-    <figure class="rv">
-      <div class="phone small"><img src="assets/semana.webp" alt="Pantalla Semana" width="1206" height="2622" loading="lazy"></div>
+      <div class="phone small"><img src="assets/semana.webp" alt="Pantalla Semana" width="1080" height="2400" loading="lazy"></div>
       <h3>Semana</h3>
-      <p>Un plan a siete días que se ajusta solo, con un foco que tu agente escribe para ti.</p>
+      <p>Un plan a siete días que se ajusta solo — hoy: limpieza inmediata post-entreno,
+      porque corres y el UV es alto.</p>
     </figure>
     <figure class="rv">
-      <div class="phone small"><img src="assets/estante.webp" alt="Pantalla Estante" width="1206" height="2622" loading="lazy"></div>
+      <div class="phone small"><img src="assets/estante.webp" alt="Pantalla Estante" width="1080" height="2400" loading="lazy"></div>
       <h3>Estante</h3>
       <p>Lo que ya tienes, analizado en conjunto: qué falta, qué se acaba y qué no te conviene.</p>
+    </figure>
+    <figure class="rv">
+      <div class="phone small"><img src="assets/perfil.webp" alt="Pantalla Perfil" width="1080" height="2400" loading="lazy"></div>
+      <h3>Perfil</h3>
+      <p>Todo lo que sabe de ti, editable y a la vista — y el escáner facial, si tú quieres.</p>
     </figure>
   </div>
 </section>
@@ -327,8 +338,8 @@
       </div>
     </div>
     <figure>
-      <div class="phone"><img src="assets/perfil.webp" alt="Perfil de SkinMs con el escáner facial" width="1206" height="2622" loading="lazy"></div>
-      <figcaption>El escáner, en sus propias palabras: «la foto se procesa y se borra».</figcaption>
+      <div class="phone"><img src="assets/consent.webp" alt="El permiso del ciclo, pedido en la conversación" width="1080" height="2400" loading="lazy"></div>
+      <figcaption>El permiso, en la propia conversación: «Dato sensible — solo con tu permiso. Puedes decir que no y seguimos igual».</figcaption>
     </figure>
   </div>
 </section>
