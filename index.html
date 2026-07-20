@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkinMs — Tu piel, en orden.</title>
+<meta name="description" content="SkinMs cruza tu piel, tus alergias, el clima de tu ciudad, tu deporte y tu estante — y decide qué te conviene hoy. Y qué no. Muy pronto en Google Play.">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta property="og:title" content="SkinMs — Tu piel, en orden.">
+<meta property="og:description" content="El cuidado de la piel que sabe decirte que no. Cada respuesta se calcula con todo tu contexto: piel, alergias, clima, deporte, estante.">
+<meta property="og:image" content="https://skinms.app/assets/og.jpg">
+<meta property="og:url" content="https://skinms.app/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  /* ── tokens: espejo 1:1 de app/lib/core/theme/quiet_bloom.dart ─────────── */
+  :root{
+    --qb-bg-page:#EFECE4;
+    --qb-grad-top:#F7F3EB; --qb-grad-mid:#FBFAF7; --qb-grad-bottom:#EEE8DC;
+    --qb-ink:#1A1714; --qb-ink-strong:#111111; --qb-ink-body:#2C2825;
+    --qb-ink-muted:#3A352D; --qb-ink-soft:#6B6459;
+    --qb-ink-on-dark:#FFFEFB;
+    --qb-border:rgba(17,17,17,.12); --qb-border-strong:rgba(17,17,17,.2);
+    --qb-gold:#8A6D2F; --qb-gold-bright:#D9B573;
+    --qb-gold-soft:rgba(138,109,47,.12); --qb-gold-border:rgba(138,109,47,.32);
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    font-family:var(--sans); color:var(--qb-ink-body);
+    background:linear-gradient(180deg,var(--qb-grad-top) 0%,var(--qb-grad-mid) 38%,var(--qb-grad-bottom) 100%);
+    -webkit-font-smoothing:antialiased; font-size:17px; line-height:1.6;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0}
+  @media (max-width:720px){section{padding:68px 0}}
+
+  h1,h2{font-family:var(--serif);color:var(--qb-ink);font-weight:600;letter-spacing:-.01em;line-height:1.1}
+  h1{font-size:clamp(2.7rem,7.2vw,4.4rem)}
+  h2{font-size:clamp(1.9rem,4.4vw,2.7rem);margin-bottom:18px}
+  .kicker{font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--qb-gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .kicker svg{flex:none}
+  p.lead{font-size:1.15rem;color:var(--qb-ink-muted);max-width:33em}
+
+  /* ── header ── */
+  header{padding:26px 0}
+  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+  .brand span{font-size:.8rem;letter-spacing:.28em;color:var(--qb-ink-muted);font-weight:600}
+
+  /* ── el roundel Ms (marca + FAB flotante, como en la app) ── */
+  .ms{position:relative;display:grid;place-items:center;border-radius:50%;
+    background:radial-gradient(circle at 34% 30%,#3A352D 0%,#1A1714 62%);color:var(--qb-ink-on-dark);
+    font-family:var(--serif);font-weight:600;white-space:nowrap;line-height:1;
+    box-shadow:0 10px 26px rgba(17,17,17,.28)}
+  .ms i{font-style:normal}
+  .ms i small{font-size:.62em}
+  .ms .orbit{position:absolute;inset:-7px;border-radius:50%;pointer-events:none}
+  .ms .orbit circle{fill:none;stroke:url(#goldarc);stroke-width:1.6;stroke-linecap:round;
+    stroke-dasharray:60 220;animation:orbit 14s linear infinite;transform-origin:center}
+  @keyframes orbit{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.ms .orbit circle{animation:none}}
+  .ms-sm{width:34px;height:34px;font-size:.82rem;box-shadow:none}
+  .ms-sm .orbit{inset:-4px}
+
+  /* ── hero ── */
+  .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;padding:34px 0 100px}
+  @media (max-width:880px){.hero{grid-template-columns:1fr;padding-top:6px;gap:44px}}
+  .hero h1 .line{display:block;opacity:0;transform:translateY(22px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero h1 .line:nth-child(2){animation-delay:.12s}
+  .hero .lead,.hero .cta,.hero .cta-note,.hero .trust{opacity:0;animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero .lead{animation-delay:.26s;margin:22px 0 30px}
+  .hero .cta{animation-delay:.4s}
+  .hero .cta-note{animation-delay:.48s}
+  .hero .trust{animation-delay:.56s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){
+    .hero h1 .line,.hero .lead,.hero .cta,.hero .cta-note,.hero .trust{animation:none;opacity:1;transform:none}
+  }
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--qb-ink);color:var(--qb-ink-on-dark);
+    border-radius:999px;padding:16px 30px;font-weight:600;font-size:1.02rem;text-decoration:none;border:0}
+  .cta.soon{cursor:default}
+  .cta .play{width:16px;height:16px}
+  .cta-note{display:block;margin-top:14px;font-size:.9rem;color:var(--qb-ink-soft)}
+  .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:30px;font-size:.9rem;color:var(--qb-ink-soft)}
+  .trust li{list-style:none;display:flex;align-items:center;gap:7px}
+  .trust svg{flex:none}
+
+  .hero-art{position:relative;width:fit-content;margin:0 auto}
+  .hero-art .fab{position:absolute;right:-24px;bottom:-14px;width:68px;height:68px;font-size:1.4rem;
+    z-index:2;cursor:pointer;border:0;transition:transform .35s ease}
+  .hero-art .fab:hover{transform:scale(1.06)}
+  .hero-art .fab:focus-visible{outline:2px solid var(--qb-gold);outline-offset:4px}
+
+  /* ── teléfono CSS ── */
+  .phone{width:min(310px,78vw);border-radius:46px;background:var(--qb-ink);padding:11px;
+    box-shadow:0 26px 60px rgba(26,23,20,.20),0 6px 18px rgba(26,23,20,.10);margin:0 auto}
+  .phone img{display:block;width:100%;height:auto;border-radius:36px}
+  .phone.small{width:min(250px,70vw);border-radius:38px;padding:9px}
+  .phone.small img{border-radius:30px}
+  figcaption{margin-top:18px;font-size:.9rem;color:var(--qb-ink-soft);text-align:center;max-width:30em;margin-left:auto;margin-right:auto}
+
+  /* ── split ── */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  @media (max-width:880px){.split{grid-template-columns:1fr;gap:44px}}
+  .split .text{max-width:32em}
+
+  /* ══ LA FLOR — pieza central interactiva ══ */
+  .bloomcard{background:rgba(255,255,255,.55);border:1px solid var(--qb-border);border-radius:30px;
+    padding:64px 48px;backdrop-filter:blur(4px)}
+  @media (max-width:720px){.bloomcard{padding:44px 20px;border-radius:22px}}
+  .bloomgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+  @media (max-width:880px){.bloomgrid{grid-template-columns:1fr;gap:36px}}
+
+  .bloomstage{position:relative;width:min(340px,86vw);margin:0 auto}
+  .bloomstage svg{display:block;width:100%;height:auto}
+  .petal{fill:#FBFAF7;stroke:var(--qb-gold);stroke-opacity:.38;stroke-dasharray:3 4;cursor:pointer;
+    transition:fill .5s ease,fill-opacity .5s ease,stroke-opacity .5s ease;fill-opacity:.6}
+  .petal.on{fill:var(--qb-gold);fill-opacity:.82;stroke-dasharray:none;stroke-opacity:0}
+  .petal:hover{fill-opacity:.9}
+  .bloomcount{font-family:var(--serif);font-size:15px;fill:var(--qb-ink);font-weight:600}
+  .bloomcenter{fill:#FBFAF7;stroke:var(--qb-gold);stroke-opacity:.4;transition:all .5s ease}
+  .bloomed .bloomcenter{fill:var(--qb-gold);stroke-opacity:0}
+  .bloomed .bloomcount{fill:var(--qb-ink-on-dark)}
+  .bloomhalo{fill:none;stroke:var(--qb-gold);stroke-opacity:0;transition:all 1s ease}
+  .bloomed .bloomhalo{stroke-opacity:.25;transform:scale(1.06);transform-origin:center}
+  @media (prefers-reduced-motion:reduce){.petal,.bloomcenter,.bloomhalo{transition:none}}
+
+  .signals{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .sig{background:rgba(255,255,255,.85);border:1px solid var(--qb-border-strong);border-radius:999px;
+    padding:9px 17px;font-size:.93rem;color:var(--qb-ink);font-family:var(--sans);cursor:pointer;
+    transition:background .3s ease,border-color .3s ease,color .3s ease}
+  .sig[aria-pressed="true"]{background:var(--qb-ink);color:var(--qb-ink-on-dark);border-color:var(--qb-ink)}
+  .sig:focus-visible{outline:2px solid var(--qb-gold);outline-offset:3px}
+  .sigline{min-height:3.2em;margin-top:20px;font-size:1rem;color:var(--qb-ink-muted);max-width:30em;
+    border-left:2px solid var(--qb-gold-border);padding-left:14px;transition:opacity .35s ease}
+  .sigline em{font-family:var(--serif);color:var(--qb-ink);font-style:normal}
+  .verdict{display:inline-block;background:var(--qb-ink);color:var(--qb-ink-on-dark);border-radius:999px;
+    padding:14px 26px;font-size:1.02rem;font-weight:600;margin-top:24px;
+    opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease}
+  .verdict small{display:block;font-weight:400;font-size:.8rem;color:var(--qb-gold-bright);margin-top:2px}
+  .verdict.show{opacity:1;transform:none}
+  .bloomhint{margin-top:18px;font-size:.88rem;color:var(--qb-ink-soft);font-style:italic;transition:opacity .4s ease}
+
+  /* ── un día contigo ── */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
+  @media (max-width:880px){.grid3{grid-template-columns:1fr;gap:56px}}
+  .grid3 h3{font-family:var(--serif);font-size:1.35rem;color:var(--qb-ink);font-weight:600;margin:24px 0 8px;text-align:center}
+  .grid3 p{font-size:.95rem;color:var(--qb-ink-soft);text-align:center;max-width:24em;margin:0 auto}
+
+  /* ── privacidad ── */
+  .priv li{list-style:none;padding-left:30px;position:relative;margin-bottom:16px;max-width:32em}
+  .priv li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;
+    background:var(--qb-gold-soft);border:1px solid var(--qb-gold-border)}
+  .links-inline{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap}
+  .links-inline a{color:var(--qb-ink);font-weight:600;font-size:.95rem;text-decoration:underline;text-underline-offset:3px}
+
+  .closing{text-align:center}
+  .closing h2{max-width:17em;margin:0 auto 18px}
+  .closing .contact{margin-top:26px;font-size:.95rem;color:var(--qb-ink-soft)}
+  .closing .contact a{color:var(--qb-ink)}
+
+  footer{border-top:1px solid var(--qb-border);padding:44px 0 56px;font-size:.88rem;color:var(--qb-ink-soft)}
+  footer .disclaimer{max-width:38em;margin-bottom:22px}
+  footer .disclaimer em{font-family:var(--serif);color:var(--qb-ink-muted);font-style:italic}
+  footer nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px}
+  footer a{color:var(--qb-ink-muted)}
+
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true"><defs>
+  <linearGradient id="goldarc" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#D9B573"/><stop offset="1" stop-color="#8A6D2F"/>
+  </linearGradient>
+</defs></svg>
+
+<header class="wrap">
+  <a class="brand" href="#" aria-label="SkinMs, inicio">
+    <img src="assets/icon-192.png" alt="" width="34" height="34" style="border-radius:50%;display:block">
+    <span>SKINMS</span>
+  </a>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="wrap hero" style="padding-top:34px">
+  <div>
+    <h1><span class="line">Tu piel,</span><span class="line">en orden.</span></h1>
+    <p class="lead">SkinMs cruza tu piel, tus alergias, el clima de tu ciudad, tu deporte y lo que ya
+    tienes en el estante — y decide qué te conviene hoy. <strong style="color:var(--qb-ink)">Y qué no.</strong></p>
+    <!-- Cuando la ficha sea pública:
+         <a class="cta" href="https://play.google.com/store/apps/details?id=com.skinsync.skinsync">…</a> -->
+    <span class="cta soon">
+      <svg class="play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      Muy pronto en Google Play
+    </span>
+    <span class="cta-note">Gratis · en español · para Android e iOS</span>
+    <ul class="trust">
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.4" aria-hidden="true"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg> Sin anuncios ni rastreadores</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M4 12h16M12 3c2.5 2.4 3.8 5.6 3.8 9S14.5 18.6 12 21c-2.5-2.4-3.8-5.6-3.8-9S9.5 5.4 12 3z"/></svg> Tus datos, en la UE</li>
+      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.4" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2m-9 4v8m6-8v8M5 6l1 14h12l1-14"/></svg> Las fotos se leen y se borran</li>
+    </ul>
+  </div>
+  <div class="hero-art rv">
+    <figure class="phone"><img src="assets/hoy.webp" alt="Pantalla Hoy de SkinMs: la rutina del día con cada paso explicado" width="1206" height="2622" fetchpriority="high"></figure>
+    <button class="ms fab" id="fab" aria-label="Conoce a MaSer, el asistente de SkinMs">
+      <svg class="orbit" viewBox="0 0 78 78" aria-hidden="true"><circle cx="39" cy="39" r="37"/></svg>
+      <i>M<small>s</small></i>
+    </button>
+  </div>
+</section>
+
+<!-- ══ LA FLOR ══ -->
+<section class="wrap" id="flor">
+  <div class="bloomcard rv">
+    <div class="bloomgrid">
+      <div>
+        <div class="kicker">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#8A6D2F" aria-hidden="true"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+          Cada respuesta, todo tu contexto
+        </div>
+        <h2>Te conocemos<br>pétalo a pétalo.</h2>
+        <p>SkinMs no da notas absolutas: cada veredicto se calcula, en el momento, con todo lo
+        que sabe de ti. <strong style="color:var(--qb-ink)">Toca cada señal</strong> y mira cómo
+        se completa tu flor — igual que en la app.</p>
+        <div class="signals" id="signals" role="group" aria-label="Las nueve señales que cruza el motor"></div>
+        <p class="sigline" id="sigline" aria-live="polite"><em>Tu objetivo.</em> Acné, manchas, rojeces… el porqué de cada paso de tu rutina.</p>
+        <span class="verdict" id="verdict">Un veredicto para tu piel, hoy
+          <small>no una nota del producto</small></span>
+        <p class="bloomhint" id="bloomhint">La flor es la de verdad: así se va completando tu alta en la app.</p>
+      </div>
+      <div class="bloomstage" id="bloomstage">
+        <svg viewBox="0 0 300 300" role="img" aria-label="La flor de SkinMs: nueve pétalos, una señal cada uno">
+          <circle class="bloomhalo" cx="150" cy="150" r="128"/>
+          <g id="petals" transform="translate(150,150)"></g>
+          <circle class="bloomcenter" cx="150" cy="150" r="34"/>
+          <text class="bloomcount" id="bloomcount" x="150" y="156" text-anchor="middle">0/9</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SABE DECIR QUE NO ══ -->
+<section class="wrap" id="maser">
+  <div class="split rv">
+    <figure>
+      <div class="phone"><img src="assets/maser.webp" alt="MaSer rechazando añadir una crema por las alergias declaradas" width="1206" height="2147" loading="lazy"></div>
+      <figcaption>Conversación real: el motor rechaza una crema por las alergias declaradas
+      — níquel y fragancias — y ofrece buscar una alternativa segura.</figcaption>
+    </figure>
+    <div class="text">
+      <div class="kicker">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>
+        El motor decide
+      </div>
+      <h2>El cuidado que sabe decirte que no.</h2>
+      <p>MaSer, su asistente, conversa contigo y entiende lo que le pides. Pero la seguridad
+      no se improvisa: un motor determinista —reglas, no ocurrencias— tiene la última palabra.</p>
+      <p style="margin-top:14px">Si le pides añadir una crema que choca con tus alergias,
+      te dirá que no. Y te explicará por qué.</p>
+      <p style="margin-top:22px;font-family:var(--serif);font-size:1.25rem;color:var(--qb-ink)">
+      La IA conversa. El motor decide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ UN DÍA CONTIGO ══ -->
+<section class="wrap">
+  <div class="rv" style="text-align:center">
+    <div class="kicker" style="justify-content:center">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10 2.1 2.1m0-14.2-2.1 2.1m-10 10-2.1 2.1"/></svg>
+      Un día con SkinMs
+    </div>
+    <h2 style="max-width:16em;margin-left:auto;margin-right:auto">Una rutina viva,<br>no una lista fija.</h2>
+  </div>
+  <div class="grid3">
+    <figure class="rv">
+      <div class="phone small"><img src="assets/hoy.webp" alt="Pantalla Hoy" width="1206" height="2622" loading="lazy"></div>
+      <h3>Hoy</h3>
+      <p>Tu rutina cambia si cambia el tiempo, si haces deporte, si tu piel reacciona.
+      Cada paso, con su porqué.</p>
+    </figure>
+    <figure class="rv">
+      <div class="phone small"><img src="assets/semana.webp" alt="Pantalla Semana" width="1206" height="2622" loading="lazy"></div>
+      <h3>Semana</h3>
+      <p>Un plan a siete días que se ajusta solo, con un foco que tu agente escribe para ti.</p>
+    </figure>
+    <figure class="rv">
+      <div class="phone small"><img src="assets/estante.webp" alt="Pantalla Estante" width="1206" height="2622" loading="lazy"></div>
+      <h3>Estante</h3>
+      <p>Lo que ya tienes, analizado en conjunto: qué falta, qué se acaba y qué no te conviene.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ══ PRIVACIDAD ══ -->
+<section class="wrap">
+  <div class="split rv">
+    <div class="text">
+      <div class="kicker">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Tus datos, en tus términos
+      </div>
+      <h2>La foto se lee<br>y se borra.</h2>
+      <ul class="priv" style="margin-top:24px">
+        <li>El escáner facial y las fotos de etiquetas se procesan al instante y se descartan.
+        Lo único que se guarda es la lectura — nunca la imagen.</li>
+        <li>Tus datos viven en la Unión Europea.</li>
+        <li>Sin anuncios, sin rastreadores de terceros.</li>
+        <li>Puedes borrar tu cuenta desde la propia app, cuando quieras.</li>
+      </ul>
+      <div class="links-inline">
+        <a href="privacidad.html">Política de privacidad</a>
+        <a href="eliminar-cuenta.html">Cómo eliminar tu cuenta</a>
+      </div>
+    </div>
+    <figure>
+      <div class="phone"><img src="assets/perfil.webp" alt="Perfil de SkinMs con el escáner facial" width="1206" height="2622" loading="lazy"></div>
+      <figcaption>El escáner, en sus propias palabras: «la foto se procesa y se borra».</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ══ CIERRE ══ -->
+<section class="wrap closing rv">
+  <h2>Empieza en un minuto;<br>te conocemos poco a poco.</h2>
+  <span class="cta soon">
+    <svg class="play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+    Muy pronto en Google Play
+  </span>
+  <p class="contact">¿Preguntas? Escríbenos a <a href="mailto:maser@skinms.app">maser@skinms.app</a></p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="disclaimer"><em>«No diagnostica ni receta — lo cosmético lo cuido, lo médico te derivo.»</em><br>
+    Son las palabras de MaSer dentro de la app, y también nuestro límite: SkinMs no sustituye
+    el consejo de un profesional sanitario.</p>
+    <nav>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="eliminar-cuenta.html">Eliminar cuenta</a>
+      <a href="mailto:maser@skinms.app">Contacto</a>
+    </nav>
+    <p>© 2026 SkinMs · Marta y Sergio</p>
+  </div>
+</footer>
+
+<script>
+/* ── la flor interactiva: 9 señales reales del motor, un pétalo cada una ── */
+const SIGNALS = [
+  ["tu objetivo",          "Acné, manchas, rojeces… el porqué de cada paso de tu rutina."],
+  ["tus alergias",         "Si un ingrediente choca contigo, queda vetado. Sin excepciones."],
+  ["tu barrera",           "Una piel castigada pide fórmulas que reparan, no que exigen."],
+  ["el clima de tu ciudad","El UV y la humedad de hoy entran en el cálculo de hoy."],
+  ["tu ciclo",             "Solo si decides compartirlo — y entonces el plan lo acompaña."],
+  ["tu deporte",           "Sudor, roce, sol: tu rutina se adapta a lo que haces."],
+  ["tu presupuesto",       "Las alternativas que te propone respetan lo que quieres gastar."],
+  ["tu estante",           "Lo que ya tienes cuenta: duplicados, huecos y conflictos."],
+  ["tu retrato",           "Las zonas de tu cara afinan la lectura. La foto nunca se guarda."],
+];
+const petalsG = document.getElementById("petals");
+const sigBox  = document.getElementById("signals");
+const sigLine = document.getElementById("sigline");
+const count   = document.getElementById("bloomcount");
+const stage   = document.getElementById("bloomstage");
+const verdict = document.getElementById("verdict");
+const hint    = document.getElementById("bloomhint");
+const on = new Set();
+
+SIGNALS.forEach(([name, line], i) => {
+  const p = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+  p.setAttribute("rx", 26); p.setAttribute("ry", 62); p.setAttribute("cy", -72);
+  p.setAttribute("transform", `rotate(${i * 40})`);
+  p.classList.add("petal"); p.dataset.i = i;
+  p.addEventListener("click", () => toggle(i));
+  petalsG.appendChild(p);
+
+  const b = document.createElement("button");
+  b.className = "sig"; b.type = "button"; b.textContent = name;
+  b.setAttribute("aria-pressed", "false"); b.dataset.i = i;
+  b.addEventListener("click", () => toggle(i));
+  sigBox.appendChild(b);
+});
+
+function toggle(i){
+  const petal = petalsG.children[i], btn = sigBox.children[i];
+  const active = !on.has(i);
+  active ? on.add(i) : on.delete(i);
+  petal.classList.toggle("on", active);
+  btn.setAttribute("aria-pressed", String(active));
+  if (active) {
+    sigLine.innerHTML = `<em>${SIGNALS[i][0][0].toUpperCase() + SIGNALS[i][0].slice(1)}.</em> ${SIGNALS[i][1]}`;
+  }
+  count.textContent = `${on.size}/9`;
+  const bloomed = on.size === 9;
+  stage.classList.toggle("bloomed", bloomed);
+  verdict.classList.toggle("show", bloomed);
+  hint.style.opacity = bloomed ? "0" : "1";
+  if (bloomed) count.textContent = "✦";
+}
+
+/* primera señal encendida como invitación */
+toggle(0);
+
+/* el FAB de MaSer lleva a su sección */
+document.getElementById("fab").addEventListener("click",
+  () => document.getElementById("maser").scrollIntoView({behavior:"smooth"}));
+
+/* reveals al hacer scroll */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+}), {threshold:.12});
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
+</script>
+</body>
+</html>

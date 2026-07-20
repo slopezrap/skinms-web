@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SkinMs — Política de Privacidad / Privacy Policy</title>
+<meta name="description" content="Política de privacidad de la app SkinMs (skincare). Privacy policy for the SkinMs skincare app.">
+<style>
+  :root { --ink:#22201c; --muted:#6b655c; --line:#e7e2d8; --bg:#faf8f3; --accent:#2e2a24; --card:#fffdf8; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:32px 20px 80px; }
+  header { text-align:center; padding:24px 0 8px; }
+  .logo { width:56px; height:56px; border-radius:50%; background:var(--accent); color:#fff;
+    display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:22px;
+    font-family:Georgia,"Times New Roman",serif; letter-spacing:1px; }
+  h1 { font-size:1.5rem; margin:16px 0 4px; }
+  .sub { color:var(--muted); font-size:.9rem; margin:0; }
+  nav.lang { text-align:center; margin:18px 0 8px; }
+  nav.lang a { display:inline-block; margin:0 6px; padding:6px 14px; border:1px solid var(--line);
+    border-radius:999px; text-decoration:none; color:var(--ink); font-size:.9rem; background:var(--card); }
+  section { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px 22px; margin:22px 0; }
+  h2 { font-size:1.25rem; margin:0 0 4px; }
+  h3 { font-size:1.02rem; margin:22px 0 6px; }
+  .updated { color:var(--muted); font-size:.85rem; font-style:italic; margin:0 0 8px; }
+  p, li { margin:8px 0; }
+  a { color:#0b6; word-break:break-word; }
+  .tablewrap { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:.88rem; margin:10px 0; }
+  th, td { border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+  th { background:#f3efe6; }
+  hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+  footer { text-align:center; color:var(--muted); font-size:.82rem; margin-top:30px; }
+  strong { color:var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">Ms</div>
+    <h1>SkinMs — Política de Privacidad</h1>
+    <p class="sub">Privacy Policy</p>
+    <nav class="lang"><a href="#es">Español</a><a href="#en">English</a></nav>
+  </header>
+
+  <!-- ============ ESPAÑOL ============ -->
+  <section id="es">
+    <h2>Política de Privacidad de SkinMs</h2>
+    <p class="updated">Última actualización: 14 de julio de 2026. Versión interna: v1.</p>
+
+    <h3>1. Responsable del tratamiento</h3>
+    <p><strong>Sergio López Rapado</strong> (persona física), Zamora, España. Contacto de privacidad: <strong><a href="mailto:maser@skinms.app">maser@skinms.app</a></strong>.</p>
+
+    <h3>2. Qué es SkinMs</h3>
+    <p>SkinMs es una app de skincare con una asistente conversacional ("MaSer") que deriva un perfil de piel y una rutina diaria/semanal a partir de lo que declaras. Un motor determinista decide qué es seguro para ti (alergias, interacciones); la IA explica y captura señales, pero nunca decide ni cambia nada sin tu confirmación. SkinMs no diagnostica ni sustituye a un profesional sanitario.</p>
+
+    <h3>3. Qué datos tratamos y para qué</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Dato</th><th>Origen</th><th>Finalidad</th><th>Base legal</th></tr>
+      <tr><td>Identificador de cuenta (UUID anónimo, o email si te registras/enlazas cuenta)</td><td>Supabase Auth (sesión anónima, email+contraseña, o inicio de sesión con Google/Apple)</td><td>Identificarte y guardar tu perfil de forma segura</td><td>Ejecución del servicio (art. 6.1.b RGPD)</td></tr>
+      <tr><td>Objetivo, tipo de piel, alergias, prioridades, productos que usas, presupuesto</td><td>Lo que cuentas a MaSer o rellenas en tu Perfil</td><td>Derivar tu perfil de piel y tu rutina personalizada</td><td>Ejecución del servicio</td></tr>
+      <tr><td>Señales cosméticas derivadas de un escáner facial (bandas de confianza)</td><td>Foto opcional que TÚ decides tomar en el escáner facial</td><td>Afinar tu perfil de piel</td><td><strong>Consentimiento explícito</strong> (art. 9.2.a — dato especial), revocable en cualquier momento desde tu Perfil</td></tr>
+      <tr><td>Ciclo hormonal (fecha ancla, duración)</td><td>Solo si activas el permiso opcional en el chat/Perfil</td><td>Ajustar tu rutina en fases del ciclo</td><td><strong>Consentimiento explícito</strong> (art. 9.2.a — dato de salud), revocable; al revocar se purga</td></tr>
+      <tr><td>Ubicación (GPS aproximado o ciudad)</td><td>Permiso del dispositivo o ciudad que escribes</td><td>Consultar el clima/UV/calidad del aire del día para tu rutina</td><td>Consentimiento (revocable en Perfil)</td></tr>
+      <tr><td>Conversación con MaSer, historial de rutina/adherencia, productos escaneados</td><td>Tu uso de la app</td><td>Responder, recomendar y mostrar tu progreso</td><td>Ejecución del servicio</td></tr>
+    </table></div>
+    <p><strong>Nunca recogemos:</strong> identificadores publicitarios, datos de rastreo de terceros, ni información de pago (SkinMs v1 no tiene compras integradas).</p>
+
+    <h3>4. Las fotos: cómo se procesan (y por qué no se guardan)</h3>
+    <p>Cuando haces un escáner facial o fotografías la etiqueta de un producto, la imagen se envía <strong>una sola vez</strong>, entera, a nuestro proveedor de IA (Google Gemini, ver §6) para leerla. La imagen se procesa <strong>en memoria</strong> y se descarta inmediatamente: nunca se escribe en disco ni en almacenamiento persistente. Nuestro propio registro interno de la captura se crea <strong>ya marcado como borrado en el mismo instante</strong>. Lo único que persiste es el resultado interpretado (p. ej. "banda de hidratación: media"), nunca la imagen.</p>
+    <p>El escáner de código de barras (Lupa) NO envía ninguna imagen: el código se lee en tu propio dispositivo y solo el número (p. ej. EAN-13) llega al servidor.</p>
+
+    <h3>5. Ubicación</h3>
+    <p>Usamos tu ubicación (GPS o ciudad) <strong>únicamente</strong> para consultar el clima/UV/calidad del aire del día en un proveedor externo (Open-Meteo). Las coordenadas se usan solo para esa consulta puntual y <strong>nunca se guardan</strong> en nuestra base de datos. Puedes usar tu ciudad en vez de dar acceso al GPS.</p>
+
+    <h3>6. Con quién compartimos datos (encargados del tratamiento)</h3>
+    <p>No vendemos tus datos ni los compartimos con terceros con fines publicitarios. Usamos los siguientes proveedores, estrictamente como encargados de tratamiento para prestar el servicio:</p>
+    <div class="tablewrap"><table>
+      <tr><th>Proveedor</th><th>Qué recibe</th><th>Para qué</th></tr>
+      <tr><td><strong>Supabase</strong> (base de datos y autenticación)</td><td>Todos los datos de tu cuenta</td><td>Almacenamiento en la UE, autenticación</td></tr>
+      <tr><td><strong>Google (API Gemini, vía LiteLLM)</strong></td><td>Texto de tus mensajes a MaSer; imágenes del escáner facial/etiqueta en el momento del análisis; texto para memoria semántica (embeddings)</td><td>Generar respuestas, leer imágenes, personalizar recomendaciones</td></tr>
+      <tr><td><strong>Google / Apple (inicio de sesión OAuth)</strong></td><td>Tu identidad de esa cuenta, si eliges iniciar sesión con Google o Apple</td><td>Autenticación, solo si tú eliges ese método</td></tr>
+      <tr><td><strong>Fly.io</strong> (alojamiento del backend)</td><td>Metadatos de conexión de red (logs de servidor)</td><td>Ejecutar la aplicación</td></tr>
+      <tr><td><strong>Open-Meteo</strong> (clima)</td><td>Coordenadas o ciudad, sin identificarte</td><td>Clima/UV/calidad del aire</td></tr>
+      <tr><td><strong>Open Beauty Facts</strong> (catálogo de productos)</td><td>El código de barras o nombre que buscas</td><td>Identificar el producto (base de datos pública abierta)</td></tr>
+      <tr><td><strong>Amazon (programa de afiliados)</strong></td><td>Solo el nombre/marca del producto, en una URL de búsqueda generada por nuestro servidor — <strong>nunca tu identificador de usuario, perfil o historial</strong></td><td>Ofrecerte un enlace de compra; el enlace lo abre tu propio navegador</td></tr>
+    </table></div>
+    <p>Google (Gemini) puede procesar solicitudes fuera del Espacio Económico Europeo. Dichas transferencias se amparan en los <strong>Términos de Tratamiento de Datos de Google</strong> y en las <strong>Cláusulas Contractuales Tipo (SCC)</strong> aprobadas por la Comisión Europea, conforme a las condiciones de la API de Gemini de Google.</p>
+
+    <h3>7. Dónde se guardan tus datos</h3>
+    <p>Tu cuenta y tu perfil se almacenan en un proyecto de Supabase (PostgreSQL) alojado en la <strong>Unión Europea</strong>. El backend que atiende tus peticiones corre en Fly.io, región de París (la más cercana a España disponible).</p>
+
+    <h3>8. Cuánto tiempo conservamos tus datos</h3>
+    <ul>
+      <li><strong>Imágenes</strong> (escáner facial / etiqueta): 0 — no se conservan nunca (ver §4).</li>
+      <li><strong>Resto de tus datos</strong>: mientras tu cuenta exista.</li>
+      <li><strong>Ciclo hormonal</strong>: hasta que revocas el permiso (se purga automáticamente) o borras tu cuenta.</li>
+      <li><strong>Al borrar tu cuenta</strong>: eliminación permanente y en cascada de todas tus tablas de usuario. Es irreversible.</li>
+    </ul>
+
+    <h3>9. Tus derechos</h3>
+    <p>Puedes, en cualquier momento y sin coste, desde tu Perfil (con confirmación biométrica) o escribiendo a <a href="mailto:maser@skinms.app">maser@skinms.app</a>:</p>
+    <ul>
+      <li><strong>Acceder/exportar</strong> tus datos en un JSON legible.</li>
+      <li><strong>Rectificar</strong> tu perfil (editable en la app).</li>
+      <li><strong>Suprimir</strong> tu cuenta (borrado permanente).</li>
+      <li><strong>Retirar el consentimiento</strong> de fotos, ubicación o ciclo hormonal en cualquier momento, sin afectar al resto del servicio.</li>
+      <li><strong>Oponerte/limitar</strong> el tratamiento y <strong>presentar una reclamación</strong> ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> (<a href="https://www.aepd.es">www.aepd.es</a>).</li>
+    </ul>
+
+    <h3>10. Seguridad</h3>
+    <p>Cifrado en tránsito (TLS) y en reposo; aislamiento de datos por usuario (Row Level Security: solo tú, autenticado, puedes leer los tuyos); las operaciones destructivas (exportar/borrar cuenta) exigen confirmación biométrica (Face ID/Touch ID o su equivalente Android) en el propio dispositivo.</p>
+
+    <h3>11. Publicidad y rastreo</h3>
+    <p>SkinMs <strong>no muestra anuncios</strong> y <strong>no integra ningún SDK de analítica o publicidad de terceros</strong> (no hay Firebase, no hay Crashlytics/Sentry, no hay Meta/TikTok/Google Ads SDK).</p>
+
+    <h3>12. Menores</h3>
+    <p>SkinMs <strong>no está dirigida a menores de 16 años</strong> y no recopilamos conscientemente datos de menores de esa edad. Si eres menor de 16, no uses la app sin el consentimiento de quien ejerza tu patria potestad o tutela.</p>
+
+    <h3>13. Cambios en esta política</h3>
+    <p>Si cambiamos algo relevante, te pediremos aceptar la nueva versión dentro de la app antes de continuar.</p>
+
+    <h3>14. Contacto</h3>
+    <p><a href="mailto:maser@skinms.app">maser@skinms.app</a></p>
+  </section>
+
+  <hr>
+
+  <!-- ============ ENGLISH ============ -->
+  <section id="en">
+    <h2>SkinMs Privacy Policy</h2>
+    <p class="updated">Last updated: July 14, 2026. Internal version: v1.</p>
+
+    <h3>1. Data controller</h3>
+    <p><strong>Sergio López Rapado</strong> (sole trader / individual), Zamora, Spain. Privacy contact: <strong><a href="mailto:maser@skinms.app">maser@skinms.app</a></strong>.</p>
+
+    <h3>2. What SkinMs is</h3>
+    <p>SkinMs is a skincare app with a conversational assistant ("MaSer") that derives a skin profile and a daily/weekly routine from what you tell it. A deterministic engine decides what is safe for you (allergies, interactions); the AI explains and captures signals but never decides or changes anything without your confirmation. SkinMs does not diagnose and is not a substitute for professional medical advice.</p>
+
+    <h3>3. What data we process and why</h3>
+    <div class="tablewrap"><table>
+      <tr><th>Data</th><th>Source</th><th>Purpose</th><th>Legal basis</th></tr>
+      <tr><td>Account identifier (anonymous UUID, or email if you register/link an account)</td><td>Supabase Auth (anonymous session, email+password, or Google/Apple sign-in)</td><td>Identify you and store your profile securely</td><td>Performance of a contract (Art. 6(1)(b) GDPR)</td></tr>
+      <tr><td>Goal, skin type, allergies, priorities, products you use, budget</td><td>What you tell MaSer or fill in your Profile</td><td>Derive your skin profile and personalized routine</td><td>Performance of a contract</td></tr>
+      <tr><td>Cosmetic signals derived from an optional face scan (confidence bands)</td><td>An optional photo YOU choose to take in the face scanner</td><td>Refine your skin profile</td><td><strong>Explicit consent</strong> (Art. 9(2)(a) — special-category data), revocable anytime from your Profile</td></tr>
+      <tr><td>Menstrual cycle (anchor date, cycle length)</td><td>Only if you opt in via chat/Profile</td><td>Adjust your routine to your cycle phase</td><td><strong>Explicit consent</strong> (Art. 9(2)(a) — health data), revocable; revoking purges it</td></tr>
+      <tr><td>Location (approximate GPS or city)</td><td>Device permission or a city you type</td><td>Look up the day's weather/UV/air quality for your routine</td><td>Consent (revocable in Profile)</td></tr>
+      <tr><td>Conversation with MaSer, routine/adherence history, scanned products</td><td>Your use of the app</td><td>Respond, recommend, and show your progress</td><td>Performance of a contract</td></tr>
+    </table></div>
+    <p><strong>We never collect:</strong> advertising identifiers, third-party tracking data, or payment information (SkinMs v1 has no in-app purchases).</p>
+
+    <h3>4. Photos: how they're processed (and why they aren't kept)</h3>
+    <p>When you run a face scan or photograph a product label, the whole image is sent <strong>once</strong> to our AI provider (Google Gemini, see §6) to be read. The image is processed <strong>in memory</strong> and discarded immediately — it is never written to disk or persistent storage. Our own internal capture record is created <strong>already marked as deleted at the same instant</strong>. Only the interpreted result (e.g. "hydration band: medium") persists, never the image.</p>
+    <p>The barcode scanner (Lupa) sends <strong>no image at all</strong>: the code is read on your own device and only the number (e.g. EAN-13) reaches the server.</p>
+
+    <h3>5. Location</h3>
+    <p>We use your location (GPS or city) <strong>only</strong> to query the day's weather/UV/air quality from an external provider (Open-Meteo). Coordinates are used only for that one-off lookup and are <strong>never stored</strong> in our database. You can use your city instead of granting GPS access.</p>
+
+    <h3>6. Who we share data with (processors)</h3>
+    <p>We do not sell your data or share it with third parties for advertising. We use the following providers strictly as processors to deliver the service:</p>
+    <div class="tablewrap"><table>
+      <tr><th>Provider</th><th>What it receives</th><th>Purpose</th></tr>
+      <tr><td><strong>Supabase</strong> (database &amp; auth)</td><td>All of your account data</td><td>EU storage, authentication</td></tr>
+      <tr><td><strong>Google (Gemini API, via LiteLLM)</strong></td><td>Text of your messages to MaSer; face-scan/label images at analysis time; text for semantic memory (embeddings)</td><td>Generate responses, read images, personalize recommendations</td></tr>
+      <tr><td><strong>Google / Apple (OAuth sign-in)</strong></td><td>Your identity from that account, only if you choose to sign in with Google or Apple</td><td>Authentication, only if you choose that method</td></tr>
+      <tr><td><strong>Fly.io</strong> (backend hosting)</td><td>Network connection metadata (server logs)</td><td>Run the application</td></tr>
+      <tr><td><strong>Open-Meteo</strong> (weather)</td><td>Coordinates or city, not linked to your identity</td><td>Weather/UV/air quality</td></tr>
+      <tr><td><strong>Open Beauty Facts</strong> (product catalogue)</td><td>The barcode or name you search</td><td>Identify the product (open public database)</td></tr>
+      <tr><td><strong>Amazon (Associates program)</strong></td><td>Only the product name/brand, in a search URL our server generates — <strong>never your user ID, profile, or history</strong></td><td>Offer a purchase link; the link is opened by your own browser</td></tr>
+    </table></div>
+    <p>Google (Gemini) may process requests outside the European Economic Area. Such transfers rely on <strong>Google's Data Processing Terms</strong> and the <strong>EU Standard Contractual Clauses (SCCs)</strong> approved by the European Commission, per Google's Gemini API terms.</p>
+
+    <h3>7. Where your data is stored</h3>
+    <p>Your account and profile are stored in a Supabase (PostgreSQL) project hosted in the <strong>European Union</strong>. The backend serving your requests runs on Fly.io, Paris region (the closest available to Spain).</p>
+
+    <h3>8. How long we keep your data</h3>
+    <ul>
+      <li><strong>Images</strong> (face scan / label photo): 0 — never retained (see §4).</li>
+      <li><strong>Everything else</strong>: for as long as your account exists.</li>
+      <li><strong>Menstrual cycle data</strong>: until you revoke the permission (auto-purged) or delete your account.</li>
+      <li><strong>On account deletion</strong>: permanent, cascading removal of every user table. Irreversible.</li>
+    </ul>
+
+    <h3>9. Your rights</h3>
+    <p>At any time, at no cost, from your Profile (with biometric confirmation) or by emailing <a href="mailto:maser@skinms.app">maser@skinms.app</a> you can:</p>
+    <ul>
+      <li><strong>Access/export</strong> your data as a readable JSON file.</li>
+      <li><strong>Rectify</strong> your profile (editable in-app).</li>
+      <li><strong>Erase</strong> your account (permanent deletion).</li>
+      <li><strong>Withdraw consent</strong> for photos, location, or cycle data at any time, without affecting the rest of the service.</li>
+      <li><strong>Object/restrict</strong> processing and <strong>lodge a complaint</strong> with the <strong>Spanish Data Protection Agency (AEPD)</strong> (<a href="https://www.aepd.es">www.aepd.es</a>).</li>
+    </ul>
+
+    <h3>10. Security</h3>
+    <p>Encryption in transit (TLS) and at rest; per-user data isolation (Row Level Security: only you, authenticated, can read your own data); destructive operations (export/delete account) require on-device biometric confirmation (Face ID/Touch ID or Android equivalent).</p>
+
+    <h3>11. Advertising and tracking</h3>
+    <p>SkinMs <strong>shows no ads</strong> and <strong>integrates no third-party analytics or advertising SDK</strong> (no Firebase, no Crashlytics/Sentry, no Meta/TikTok/Google Ads SDK).</p>
+
+    <h3>12. Children</h3>
+    <p>SkinMs is <strong>not directed at children under 16</strong> and we do not knowingly collect data from users under that age. If you are under 16, do not use the app without the consent of your parent or legal guardian.</p>
+
+    <h3>13. Changes to this policy</h3>
+    <p>If we make a material change, we will ask you to accept the new version in-app before continuing.</p>
+
+    <h3>14. Contact</h3>
+    <p><a href="mailto:maser@skinms.app">maser@skinms.app</a></p>
+  </section>
+
+  <footer>© 2026 SkinMs — Sergio López Rapado. Zamora, España.</footer>
+</div>
+</body>
+</html>
