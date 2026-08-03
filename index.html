@@ -3,437 +3,539 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SkinMs — Tu piel, en orden.</title>
-<meta name="description" content="SkinMs cruza tu piel, tus alergias, el clima de tu ciudad, tu deporte y tu estante — y decide qué te conviene hoy. Y qué no. Muy pronto en Google Play.">
+<title>SkinMs — Un 92 para ti puede ser un 40 para tu hermana.</title>
+<meta name="description" content="Escanea un producto, búscalo o hazle una foto a los ingredientes. SkinMs cruza tu piel, tus alergias, tu ciclo, el clima y lo que ya tienes en el baño para decirte si te conviene a ti. Gratis, en español.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
-<meta property="og:title" content="SkinMs — Tu piel, en orden.">
-<meta property="og:description" content="El cuidado de la piel que sabe decirte que no. Cada respuesta se calcula con todo tu contexto: piel, alergias, clima, deporte, estante.">
+<meta name="theme-color" content="#EFECE4">
+<meta property="og:title" content="SkinMs — Un 92 para ti puede ser un 40 para tu hermana.">
+<meta property="og:description" content="Una nota que vale para todo el mundo no vale para nadie. SkinMs mira tu piel, tus alergias, tu ciclo y tu vida antes de decirte nada.">
 <meta property="og:image" content="https://skinms.app/assets/og.jpg">
 <meta property="og:url" content="https://skinms.app/">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://skinms.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
 <style>
-  /* ── tokens: espejo 1:1 de app/lib/core/theme/quiet_bloom.dart ─────────── */
-  :root{
-    --qb-bg-page:#EFECE4;
-    --qb-grad-top:#F7F3EB; --qb-grad-mid:#FBFAF7; --qb-grad-bottom:#EEE8DC;
-    --qb-ink:#1A1714; --qb-ink-strong:#111111; --qb-ink-body:#2C2825;
-    --qb-ink-muted:#3A352D; --qb-ink-soft:#6B6459;
-    --qb-ink-on-dark:#FFFEFB;
-    --qb-border:rgba(17,17,17,.12); --qb-border-strong:rgba(17,17,17,.2);
-    --qb-gold:#8A6D2F; --qb-gold-bright:#D9B573;
-    --qb-gold-soft:rgba(138,109,47,.12); --qb-gold-border:rgba(138,109,47,.32);
-    --serif:"Fraunces",Georgia,"Times New Roman",serif;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{
-    font-family:var(--sans); color:var(--qb-ink-body);
-    background:linear-gradient(180deg,var(--qb-grad-top) 0%,var(--qb-grad-mid) 38%,var(--qb-grad-bottom) 100%);
-    -webkit-font-smoothing:antialiased; font-size:17px; line-height:1.6;
-    overflow-x:hidden;
-  }
-  .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-  section{padding:96px 0}
-  @media (max-width:720px){section{padding:68px 0}}
+/* ─────────────────────────────────────────────────────────────────────────
+   Tokens — espejo de app/lib/core/theme/qb_palette.dart («ecru editorial»).
+   Fuente única: si cambia el Dart, cambia aquí. Nunca un hex suelto abajo.
+   ───────────────────────────────────────────────────────────────────────── */
+:root{
+  --paper:#EFECE4; --paper-top:#F7F3EB; --paper-mid:#FBFAF7; --paper-bottom:#EEE8DC;
+  --ink:#1A1714; --ink-body:#2C2825; --ink-muted:#3A352D; --ink-soft:#6B6459;
+  --on-emphasis:#FFFEFB;
+  --good:#4A6B3F; --good-ink:#3B5230; --good-soft:#E9F0E4;
+  --watch:#8A6D2F; --watch-ink:#7A5E1A;
+  --alert:#A3463A; --alert-deep:#5B1F18;
+  --gold:#8A6D2F; --gold-text:#8A5F14; --gold-on-dark:#F2CE8A;
+  --sunflower:#F2B544; --sunflower-disk:#7A4E28;
+  --line:rgba(26,23,20,.11); --line-strong:rgba(26,23,20,.2);
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);color:var(--ink-body);font-size:17px;line-height:1.62;
+  background:var(--paper);
+  background-image:linear-gradient(180deg,var(--paper-top) 0%,var(--paper-mid) 34%,var(--paper) 62%,var(--paper-bottom) 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+section{padding:104px 0}
+@media (max-width:760px){body{font-size:16px}section{padding:68px 0}}
 
-  h1,h2{font-family:var(--serif);color:var(--qb-ink);font-weight:600;letter-spacing:-.01em;line-height:1.1}
-  h1{font-size:clamp(2.7rem,7.2vw,4.4rem)}
-  h2{font-size:clamp(1.9rem,4.4vw,2.7rem);margin-bottom:18px}
-  .kicker{font-size:.78rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
-    color:var(--qb-gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-  .kicker svg{flex:none}
-  p.lead{font-size:1.15rem;color:var(--qb-ink-muted);max-width:33em}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:600;letter-spacing:-.022em;line-height:1.08}
+h1{font-size:clamp(2.5rem,6.6vw,4.3rem)}
+h2{font-size:clamp(1.85rem,4.2vw,2.85rem);line-height:1.12}
+h3{font-size:1.14rem;letter-spacing:-.01em;line-height:1.3}
+.kicker{font-size:.74rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--gold-text);margin-bottom:16px}
+.lead{font-size:clamp(1.06rem,2.1vw,1.22rem);color:var(--ink-muted);max-width:34em}
+.sub{color:var(--ink-soft);font-size:.95rem}
+strong{color:var(--ink);font-weight:600}
+a{color:var(--gold-text)}
+:focus-visible{outline:2.5px solid var(--gold);outline-offset:3px;border-radius:6px}
 
-  /* ── header ── */
-  header{padding:26px 0}
-  .brand{display:flex;align-items:center;gap:11px;text-decoration:none}
-  .brand span{font-size:.8rem;letter-spacing:.28em;color:var(--qb-ink-muted);font-weight:600}
+/* ── CTA ─────────────────────────────────────────────────────────────── */
+.cta{display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:var(--on-emphasis);
+  text-decoration:none;font-weight:600;font-size:1.02rem;padding:16px 28px;border-radius:999px;
+  box-shadow:0 12px 30px rgba(26,23,20,.22);transition:transform .18s ease,box-shadow .18s ease;
+  position:relative;overflow:hidden}
+.cta:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(26,23,20,.28)}
+.cta:active{transform:translateY(0)}
+.cta svg{flex:none}
+/* El destello es DECORACIÓN: va por detrás del contenido. Sin este z-index el pseudo-elemento
+   (posicionado) se pintaba encima del texto y lo velaba en cada pasada. */
+.cta svg,.cta span{position:relative;z-index:1}
+.cta::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 38%,
+  rgba(242,206,138,.34) 50%,transparent 62%);transform:translateX(-120%);animation:shine 3400ms ease-in-out infinite}
+@keyframes shine{0%,72%{transform:translateX(-120%)}88%,100%{transform:translateX(120%)}}
+.cta-note{display:block;margin-top:14px;font-size:.9rem;color:var(--ink-soft)}
 
-  /* ── el roundel Ms (marca + FAB flotante, como en la app) ── */
-  .ms{position:relative;display:grid;place-items:center;border-radius:50%;
-    background:radial-gradient(circle at 34% 30%,#3A352D 0%,#1A1714 62%);color:var(--qb-ink-on-dark);
-    font-family:var(--serif);font-weight:600;white-space:nowrap;line-height:1;
-    box-shadow:0 10px 26px rgba(17,17,17,.28)}
-  .ms i{font-style:normal}
-  .ms i small{font-size:.62em}
-  .ms .orbit{position:absolute;inset:-7px;border-radius:50%;pointer-events:none}
-  .ms .orbit circle{fill:none;stroke:url(#goldarc);stroke-width:1.6;stroke-linecap:round;
-    stroke-dasharray:60 220;animation:orbit 14s linear infinite;transform-origin:center}
-  @keyframes orbit{to{transform:rotate(360deg)}}
-  @media (prefers-reduced-motion:reduce){.ms .orbit circle{animation:none}}
-  .ms-sm{width:34px;height:34px;font-size:.82rem;box-shadow:none}
-  .ms-sm .orbit{inset:-4px}
+/* ── header ──────────────────────────────────────────────────────────── */
+header{padding:24px 0 0}
+.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none}
+.brand b{font-family:var(--serif);font-size:1.06rem;color:var(--ink);letter-spacing:-.01em;font-weight:600}
+.roundel{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;flex:none;
+  background:radial-gradient(circle at 34% 30%,#3A352D 0%,#1A1714 64%);color:var(--on-emphasis);
+  font-family:var(--serif);font-size:.8rem;font-weight:600;line-height:1}
 
-  /* ── hero ── */
-  .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:52px;align-items:center;padding:34px 0 100px}
-  @media (max-width:880px){.hero{grid-template-columns:1fr;padding-top:6px;gap:44px}}
-  .hero h1 .line{display:block;opacity:0;transform:translateY(22px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
-  .hero h1 .line:nth-child(2){animation-delay:.12s}
-  .hero .lead,.hero .cta,.hero .cta-note,.hero .trust{opacity:0;animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
-  .hero .lead{animation-delay:.26s;margin:22px 0 30px}
-  .hero .cta{animation-delay:.4s}
-  .hero .cta-note{animation-delay:.48s}
-  .hero .trust{animation-delay:.56s}
-  @keyframes rise{to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){
-    .hero h1 .line,.hero .lead,.hero .cta,.hero .cta-note,.hero .trust{animation:none;opacity:1;transform:none}
-  }
-  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--qb-ink);color:var(--qb-ink-on-dark);
-    border-radius:999px;padding:16px 30px;font-weight:600;font-size:1.02rem;text-decoration:none;border:0}
-  .cta.soon{cursor:default}
-  .cta .play{width:16px;height:16px}
-  .cta-note{display:block;margin-top:14px;font-size:.9rem;color:var(--qb-ink-soft)}
-  .trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:30px;font-size:.9rem;color:var(--qb-ink-soft)}
-  .trust li{list-style:none;display:flex;align-items:center;gap:7px}
-  .trust svg{flex:none}
+/* ── hero ────────────────────────────────────────────────────────────── */
+.hero{padding:56px 0 96px}
+.hero h1{max-width:14ch}
+.hero .accent{color:var(--gold-text)}
+.hero .lead{margin:26px 0 32px}
+@media (max-width:760px){.hero{padding:34px 0 64px}}
 
-  .hero-art{position:relative;width:fit-content;margin:0 auto}
-  .hero-art .fab{position:absolute;right:-24px;bottom:-14px;width:68px;height:68px;font-size:1.4rem;
-    z-index:2;cursor:pointer;border:0;transition:transform .35s ease}
-  .hero-art .fab:hover{transform:scale(1.06)}
-  .hero-art .fab:focus-visible{outline:2px solid var(--qb-gold);outline-offset:4px}
+.trust{list-style:none;display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.trust li{font-size:.83rem;color:var(--ink-muted);background:rgba(255,255,255,.62);
+  border:1px solid var(--line);border-radius:999px;padding:7px 14px}
 
-  /* ── teléfono CSS ── */
-  .phone{width:min(310px,78vw);border-radius:46px;background:var(--qb-ink);padding:11px;
-    box-shadow:0 26px 60px rgba(26,23,20,.20),0 6px 18px rgba(26,23,20,.10);margin:0 auto}
-  .phone img{display:block;width:100%;height:auto;border-radius:36px;background:#EFECE4;aspect-ratio:1080/2400}
-  .phone.small{width:min(250px,70vw);border-radius:38px;padding:9px}
-  .phone.small img{border-radius:30px}
-  figcaption{margin-top:18px;font-size:.9rem;color:var(--qb-ink-soft);text-align:center;max-width:30em;margin-left:auto;margin-right:auto}
+/* ── el visual del hero: la misma crema, dos personas ───────────────── */
+/* Rótulo con filete a los lados. En flujo normal — nunca puede pisar las fichas.
+   (Antes iba en position:absolute sobre el hueco entre tarjetas: con el fondo en degradado
+   su relleno sólido no casaba y en anchos intermedios el texto se montaba encima.) */
+.duel-label{display:flex;align-items:center;justify-content:center;gap:16px;
+  margin:64px 0 16px;font-size:.75rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft)}
+.duel-label::before,.duel-label::after{content:"";height:1px;flex:1;max-width:130px;background:var(--line-strong)}
+.duel{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:680px){.duel{grid-template-columns:1fr;gap:14px}.duel-label{margin-top:48px}}
+.card{background:rgba(255,255,255,.76);border:1px solid var(--line);border-radius:var(--r);
+  padding:24px 22px;backdrop-filter:blur(6px)}
+.card .who{font-size:.76rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft)}
+.card .prod{font-family:var(--serif);font-size:1.02rem;color:var(--ink);margin:12px 0 18px;line-height:1.25}
+.score{font-family:var(--serif);font-size:3.5rem;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.score small{font-size:1.1rem;font-weight:500;margin-left:3px}
+.band{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:6px}
+.is-good .score,.is-good .band{color:var(--good-ink)}
+.is-bad .score,.is-bad .band{color:var(--alert)}
+.reasons{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.reasons li{font-size:.87rem;color:var(--ink-muted);display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.dot{width:7px;height:7px;border-radius:50%;flex:none;margin-top:.48em}
+.is-good .dot{background:var(--good)}
+.is-bad .dot{background:var(--alert)}
 
-  /* ── split ── */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-  @media (max-width:880px){.split{grid-template-columns:1fr;gap:44px}}
-  .split .text{max-width:32em}
-  .duo{display:flex;gap:18px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
-  .duo .phone.small{width:min(205px,42vw);margin:0}
+/* ── bloques genéricos ───────────────────────────────────────────────── */
+.band-quiet{background:rgba(255,255,255,.5);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex:none;
+  background:rgba(138,109,47,.11);border:1px solid rgba(138,109,47,.24);color:var(--gold-text)}
+.ways{list-style:none;margin-top:34px;display:flex;flex-direction:column;gap:24px}
+.ways li{display:flex;gap:16px;align-items:flex-start}
+.ways h3{margin-bottom:5px}
+.ways p{font-size:.95rem;color:var(--ink-muted)}
 
-  /* ══ LA FLOR — pieza central interactiva ══ */
-  .bloomcard{background:rgba(255,255,255,.55);border:1px solid var(--qb-border);border-radius:30px;
-    padding:64px 48px;backdrop-filter:blur(4px)}
-  @media (max-width:720px){.bloomcard{padding:44px 20px;border-radius:22px}}
-  .bloomgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
-  @media (max-width:880px){.bloomgrid{grid-template-columns:1fr;gap:36px}}
+/* ── la lista de "todo lo que miramos" ──────────────────────────────── */
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:48px}
+@media (max-width:820px){.cols{grid-template-columns:1fr;gap:30px}}
+.col h3{font-size:1rem;padding-bottom:12px;border-bottom:2px solid var(--line-strong);margin-bottom:16px}
+.col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.col li{font-size:.95rem;color:var(--ink-muted);display:flex;gap:10px;align-items:flex-start;line-height:1.45}
+.col li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--sunflower);
+  flex:none;margin-top:.55em}
 
-  .bloomstage{position:relative;width:min(340px,86vw);margin:0 auto}
-  .bloomstage svg{display:block;width:100%;height:auto}
-  .petal{fill:#FBFAF7;stroke:var(--qb-gold);stroke-opacity:.38;stroke-dasharray:3 4;cursor:pointer;
-    transition:fill .5s ease,fill-opacity .5s ease,stroke-opacity .5s ease;fill-opacity:.6}
-  .petal.on{fill:var(--qb-gold);fill-opacity:.82;stroke-dasharray:none;stroke-opacity:0}
-  .petal:hover{fill-opacity:.9}
-  .bloomcount{font-family:var(--serif);font-size:15px;fill:var(--qb-ink);font-weight:600}
-  .bloomcenter{fill:#FBFAF7;stroke:var(--qb-gold);stroke-opacity:.4;transition:all .5s ease}
-  .bloomed .bloomcenter{fill:var(--qb-gold);stroke-opacity:0}
-  .bloomed .bloomcount{fill:var(--qb-ink-on-dark)}
-  .bloomhalo{fill:none;stroke:var(--qb-gold);stroke-opacity:0;transition:all 1s ease}
-  .bloomed .bloomhalo{stroke-opacity:.25;transform:scale(1.06);transform-origin:center}
-  @media (prefers-reduced-motion:reduce){.petal,.bloomcenter,.bloomhalo{transition:none}}
+.callout{margin-top:52px;border:1.5px solid var(--alert);border-radius:var(--r);
+  background:linear-gradient(180deg,rgba(163,70,58,.055),rgba(163,70,58,.02));padding:30px 30px}
+.callout .kicker{color:var(--alert)}
+.callout p{font-size:1.05rem;color:var(--ink-body);max-width:44em}
+@media (max-width:600px){.callout{padding:24px 22px}}
 
-  .signals{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-  .sig{background:rgba(255,255,255,.85);border:1px solid var(--qb-border-strong);border-radius:999px;
-    padding:9px 17px;font-size:.93rem;color:var(--qb-ink);font-family:var(--sans);cursor:pointer;
-    transition:background .3s ease,border-color .3s ease,color .3s ease}
-  .sig[aria-pressed="true"]{background:var(--qb-ink);color:var(--qb-ink-on-dark);border-color:var(--qb-ink)}
-  .sig:focus-visible{outline:2px solid var(--qb-gold);outline-offset:3px}
-  .sigline{min-height:3.2em;margin-top:20px;font-size:1rem;color:var(--qb-ink-muted);max-width:30em;
-    border-left:2px solid var(--qb-gold-border);padding-left:14px;transition:opacity .35s ease}
-  .sigline em{font-family:var(--serif);color:var(--qb-ink);font-style:normal}
-  .verdict{display:inline-block;background:var(--qb-ink);color:var(--qb-ink-on-dark);border-radius:999px;
-    padding:14px 26px;font-size:1.02rem;font-weight:600;margin-top:24px;
-    opacity:0;transform:translateY(10px);transition:opacity .7s ease,transform .7s ease}
-  .verdict small{display:block;font-weight:400;font-size:.8rem;color:var(--qb-gold-bright);margin-top:2px}
-  .verdict.show{opacity:1;transform:none}
-  .bloomhint{margin-top:18px;font-size:.88rem;color:var(--qb-ink-soft);font-style:italic;transition:opacity .4s ease}
+/* ── la prueba: captura + cita textual de la propia app ─────────────── */
+.proof{display:grid;grid-template-columns:.82fr 1.18fr;gap:52px;align-items:center;margin-top:58px}
+@media (max-width:820px){.proof{grid-template-columns:1fr;gap:30px}}
+.proof blockquote p{color:var(--ink-muted);font-size:1.05rem}
+.proof .quoted{font-family:var(--serif);font-size:clamp(1.4rem,3vw,1.95rem);color:var(--ink);
+  line-height:1.2;margin:20px 0 14px;letter-spacing:-.015em}
 
-  /* ── un día contigo ── */
-  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px}
-  @media (max-width:880px){.grid3{grid-template-columns:1fr;gap:56px}}
-  .grid3 h3{font-family:var(--serif);font-size:1.35rem;color:var(--qb-ink);font-weight:600;margin:24px 0 8px;text-align:center}
-  .grid3 p{font-size:.95rem;color:var(--qb-ink-soft);text-align:center;max-width:24em;margin:0 auto}
+/* ── split: texto + captura ─────────────────────────────────────────── */
+.split{display:grid;grid-template-columns:1.06fr .94fr;gap:60px;align-items:center}
+.split.flip .txt{order:2}
+@media (max-width:860px){.split{grid-template-columns:1fr;gap:36px}.split.flip .txt{order:0}}
+.shot{margin:0}
+.shot img{width:100%;max-width:330px;height:auto;display:block;border-radius:26px;
+  border:1px solid var(--line);box-shadow:0 26px 60px rgba(26,23,20,.16);margin:0 auto}
+.shot figcaption{margin-top:14px;font-size:.82rem;color:var(--ink-soft);text-align:center}
 
-  /* ── privacidad ── */
-  .priv li{list-style:none;padding-left:30px;position:relative;margin-bottom:16px;max-width:32em}
-  .priv li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;
-    background:var(--qb-gold-soft);border:1px solid var(--qb-gold-border)}
-  .links-inline{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap}
-  .links-inline a{color:var(--qb-ink);font-weight:600;font-size:.95rem;text-decoration:underline;text-underline-offset:3px}
+/* ── la promesa incorruptible ───────────────────────────────────────── */
+.pledge{background:var(--ink);color:var(--on-emphasis);border-radius:26px;padding:60px 52px;margin-top:8px}
+.pledge h2{color:var(--on-emphasis)}
+.pledge .kicker{color:var(--gold-on-dark)}
+.pledge p{color:rgba(255,254,251,.8);max-width:40em;margin-top:20px;font-size:1.06rem}
+.pledge .rule{margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,254,251,.18);
+  font-family:var(--serif);font-size:1.18rem;color:var(--gold-on-dark);line-height:1.4;max-width:30em}
+@media (max-width:600px){.pledge{padding:40px 26px;border-radius:20px}}
 
-  .closing{text-align:center}
-  .closing h2{max-width:17em;margin:0 auto 18px}
-  .closing .contact{margin-top:26px;font-size:.95rem;color:var(--qb-ink-soft)}
-  .closing .contact a{color:var(--qb-ink)}
+/* ── cierre + footer ────────────────────────────────────────────────── */
+.closing{text-align:center}
+.closing h2{max-width:16ch;margin:0 auto 30px}
+footer{border-top:1px solid var(--line);padding:44px 0 60px;font-size:.88rem;color:var(--ink-soft)}
+.foot{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+.foot nav{display:flex;flex-wrap:wrap;gap:20px}
+.foot a{color:var(--ink-muted);text-decoration:none}
+.foot a:hover{color:var(--ink);text-decoration:underline}
 
-  footer{border-top:1px solid var(--qb-border);padding:44px 0 56px;font-size:.88rem;color:var(--qb-ink-soft)}
-  footer .disclaimer{max-width:38em;margin-bottom:22px}
-  footer .disclaimer em{font-family:var(--serif);color:var(--qb-ink-muted);font-style:italic}
-  footer nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px}
-  footer a{color:var(--qb-ink-muted)}
-
-  .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-  .rv.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+/* ── entrada suave ──────────────────────────────────────────────────── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .72s cubic-bezier(.2,.7,.2,1),transform .72s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .cta::after{animation:none;display:none}
+}
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" aria-hidden="true"><defs>
-  <linearGradient id="goldarc" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0" stop-color="#D9B573"/><stop offset="1" stop-color="#8A6D2F"/>
-  </linearGradient>
-</defs></svg>
-
-<header class="wrap">
-  <a class="brand" href="#" aria-label="SkinMs, inicio">
-    <img src="assets/icon-192.png" alt="" width="34" height="34" style="border-radius:50%;display:block">
-    <span>SKINMS</span>
-  </a>
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="roundel" aria-hidden="true">Ms</span>
+      <b>SkinMs</b>
+    </a>
+  </div>
 </header>
 
-<!-- ══ HERO ══ -->
-<section class="wrap hero" style="padding-top:34px">
-  <div>
-    <h1><span class="line">Tu piel,</span><span class="line">en orden.</span></h1>
-    <p class="lead">SkinMs cruza tu piel, tus alergias, el clima de tu ciudad, tu deporte y lo que ya
-    tienes en el estante — y decide qué te conviene hoy. <strong style="color:var(--qb-ink)">Y qué no.</strong></p>
-    <!-- Cuando la ficha sea pública:
-         <a class="cta" href="https://play.google.com/store/apps/details?id=com.skinsync.skinsync">…</a> -->
-    <span class="cta soon">
-      <svg class="play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      Muy pronto en Google Play
-    </span>
-    <span class="cta-note">Gratis · en español · para Android e iOS</span>
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Un 92 para ti puede ser un <span class="accent">40</span> para tu hermana.</h1>
+    <p class="lead">Ese es justo el punto. Escanea un producto, búscalo por su nombre o hazle una
+      foto a los ingredientes: te decimos si te conviene <strong>a ti</strong> — no a la media.</p>
+
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.skinsync.skinsync">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      <span>Descargar en Google Play</span>
+    </a>
+    <span class="cta-note">Gratis · en español · sin anuncios</span>
+
     <ul class="trust">
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.4" aria-hidden="true"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg> Sin anuncios ni rastreadores</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.4" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M4 12h16M12 3c2.5 2.4 3.8 5.6 3.8 9S14.5 18.6 12 21c-2.5-2.4-3.8-5.6-3.8-9S9.5 5.4 12 3z"/></svg> Tus datos, en la UE</li>
-      <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.4" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2m-9 4v8m6-8v8M5 6l1 14h12l1-14"/></svg> Las fotos se leen y se borran</li>
+      <li>Sin anuncios ni rastreadores</li>
+      <li>Tu foto no se guarda</li>
+      <li>Tus datos, en Europa</li>
+      <li>Bórralo todo cuando quieras</li>
     </ul>
-  </div>
-  <div class="hero-art rv">
-    <figure class="phone"><img src="assets/hoy.webp" alt="Pantalla Hoy de SkinMs: la rutina de Marta en Madrid, con UV alto y su deporte" width="1080" height="2400" fetchpriority="high"></figure>
-    <button class="ms fab" id="fab" aria-label="Conoce a MaSer, el asistente de SkinMs">
-      <svg class="orbit" viewBox="0 0 78 78" aria-hidden="true"><circle cx="39" cy="39" r="37"/></svg>
-      <i>M<small>s</small></i>
-    </button>
-  </div>
-</section>
 
-<!-- ══ LA FLOR ══ -->
-<section class="wrap" id="flor">
-  <div class="bloomcard rv">
-    <div class="bloomgrid">
-      <div>
-        <div class="kicker">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#8A6D2F" aria-hidden="true"><path d="M12 2l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
-          Cada respuesta, todo tu contexto
-        </div>
-        <h2>Te conocemos<br>pétalo a pétalo.</h2>
-        <p>SkinMs no da notas absolutas: cada veredicto se calcula, en el momento, con todo lo
-        que sabe de ti. <strong style="color:var(--qb-ink)">Toca cada señal</strong> y mira cómo
-        se completa tu flor — igual que en la app.</p>
-        <div class="signals" id="signals" role="group" aria-label="Las nueve señales que cruza el motor"></div>
-        <p class="sigline" id="sigline" aria-live="polite"><em>Tu objetivo.</em> Acné, manchas, rojeces… el porqué de cada paso de tu rutina.</p>
-        <span class="verdict" id="verdict">Un veredicto para tu piel, hoy
-          <small>no una nota del producto</small></span>
-        <p class="bloomhint" id="bloomhint">La flor es la de verdad: así se va completando tu alta en la app.</p>
-      </div>
-      <div>
-      <div class="bloomstage" id="bloomstage">
-        <svg viewBox="0 0 300 300" role="img" aria-label="La flor de SkinMs: nueve pétalos, una señal cada uno">
-          <circle class="bloomhalo" cx="150" cy="150" r="128"/>
-          <g id="petals" transform="translate(150,150)"></g>
-          <circle class="bloomcenter" cx="150" cy="150" r="34"/>
-          <text class="bloomcount" id="bloomcount" x="150" y="156" text-anchor="middle">0/9</text>
-        </svg>
-      </div>
-      <figure style="margin-top:34px">
-        <div class="phone small"><img src="assets/teconozco.webp" alt="El cierre del alta en la app: Te conozco, 13 de 13" width="1080" height="2400" loading="lazy"></div>
-        <figcaption>La de verdad, al final de tu alta: «cada pétalo es algo que me contaste».</figcaption>
-      </figure>
-      </div>
+    <!-- El mismo bote, dos personas, dos respuestas. El argumento entero en una imagen. -->
+    <p class="duel-label rv"><span>El mismo bote</span></p>
+    <div class="duel rv" role="group" aria-label="El mismo producto valorado para dos personas distintas">
+      <article class="card is-good">
+        <p class="who">Para ti</p>
+        <p class="prod">Sérum con niacinamida y ácido salicílico</p>
+        <p class="score">92<small>%</small></p>
+        <p class="band">Te encaja</p>
+        <ul class="reasons">
+          <li><span class="dot" aria-hidden="true"></span>Va a lo que quieres arreglar: granos y poro marcado</li>
+          <li><span class="dot" aria-hidden="true"></span>Tu barrera aguanta bien este activo</li>
+          <li><span class="dot" aria-hidden="true"></span>No repite nada de lo que ya tienes</li>
+        </ul>
+      </article>
+
+      <article class="card is-bad">
+        <p class="who">Para tu hermana</p>
+        <p class="prod">Sérum con niacinamida y ácido salicílico</p>
+        <p class="score">40<small>%</small></p>
+        <p class="band">Mejor no</p>
+        <ul class="reasons">
+          <li><span class="dot" aria-hidden="true"></span>Su piel viene sensible: este activo la irritaría</li>
+          <li><span class="dot" aria-hidden="true"></span>Ya usa un exfoliante tres noches por semana</li>
+          <li><span class="dot" aria-hidden="true"></span>Lo suyo son las rojeces, y esto no las toca</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ══ SABE DECIR QUE NO ══ -->
-<section class="wrap" id="maser">
-  <div class="split rv">
-    <figure>
-      <div class="duo">
-        <div class="phone small"><img src="assets/lupa.webp" alt="La Lupa: NIVEA Soft, no apta por la alergia a fragancia" width="1080" height="2400" loading="lazy"></div>
-        <div class="phone small"><img src="assets/maser.webp" alt="MaSer se niega a añadir la crema vetada" width="1080" height="2400" loading="lazy"></div>
-      </div>
-      <figcaption>La misma crema, dos veces no: la Lupa la veta por tu alergia, y al pedírsela a MaSer
-      responde «el motor de seguridad la ha bloqueado para ti» — y ofrece alternativa.</figcaption>
-    </figure>
-    <div class="text">
-      <div class="kicker">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.2" aria-hidden="true"><path d="M12 3l7 4v5c0 4.5-3 8-7 9-4-1-7-4.5-7-9V7z"/></svg>
-        El motor decide
-      </div>
-      <h2>El cuidado que sabe decirte que no.</h2>
-      <p>MaSer, su asistente, conversa contigo y entiende lo que le pides. Pero la seguridad
-      no se improvisa: un motor determinista —reglas, no ocurrencias— tiene la última palabra.</p>
-      <p style="margin-top:14px">Si le pides añadir una crema que choca con tus alergias,
-      te dirá que no. Y te explicará por qué.</p>
-      <p style="margin-top:22px;font-family:var(--serif);font-size:1.25rem;color:var(--qb-ink)">
-      La IA conversa. El motor decide.</p>
-    </div>
+<!-- ═══ EL PROBLEMA ════════════════════════════════════════════════════ -->
+<section class="band-quiet">
+  <div class="wrap narrow rv">
+    <p class="kicker">Por qué existimos</p>
+    <h2>Una nota que vale para todo el mundo no vale para nadie.</h2>
+    <p class="lead" style="margin-top:22px">Un 78 sobre 100. ¿Para quién? Ese número no sabe que
+      eres alérgica a la fragancia, que estás embarazada, que ya usas retinol tres noches por
+      semana ni cuánto te apetece gastarte en una crema.</p>
   </div>
 </section>
 
-<!-- ══ UN DÍA CONTIGO ══ -->
-<section class="wrap">
-  <div class="rv" style="text-align:center">
-    <div class="kicker" style="justify-content:center">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9l2.1 2.1m10 10 2.1 2.1m0-14.2-2.1 2.1m-10 10-2.1 2.1"/></svg>
-      Un día con SkinMs
-    </div>
-    <h2 style="max-width:16em;margin-left:auto;margin-right:auto">Una rutina viva,<br>no una lista fija.</h2>
-  </div>
-  <div class="grid3">
-    <figure class="rv">
-      <div class="phone small"><img src="assets/semana.webp" alt="Pantalla Semana" width="1080" height="2400" loading="lazy"></div>
-      <h3>Semana</h3>
-      <p>Un plan a siete días que se ajusta solo — hoy: limpieza inmediata post-entreno,
-      porque corres y el UV es alto.</p>
-    </figure>
-    <figure class="rv">
-      <div class="phone small"><img src="assets/estante.webp" alt="Pantalla Estante" width="1080" height="2400" loading="lazy"></div>
-      <h3>Estante</h3>
-      <p>Lo que ya tienes, analizado en conjunto: qué falta, qué se acaba y qué no te conviene.</p>
-    </figure>
-    <figure class="rv">
-      <div class="phone small"><img src="assets/perfil.webp" alt="Pantalla Perfil" width="1080" height="2400" loading="lazy"></div>
-      <h3>Perfil</h3>
-      <p>Todo lo que sabe de ti, editable y a la vista — y el escáner facial, si tú quieres.</p>
-    </figure>
-  </div>
-</section>
+<!-- ═══ TRES FORMAS DE PREGUNTAR ═══════════════════════════════════════ -->
+<section>
+  <div class="wrap split">
+    <div class="txt rv">
+      <p class="kicker">Pregúntale por cualquier bote</p>
+      <h2>Tres formas de preguntar.<br>Ninguna te obliga a copiar una etiqueta.</h2>
 
-<!-- ══ PRIVACIDAD ══ -->
-<section class="wrap">
-  <div class="split rv">
-    <div class="text">
-      <div class="kicker">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8A6D2F" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-        Tus datos, en tus términos
-      </div>
-      <h2>La foto se lee<br>y se borra.</h2>
-      <ul class="priv" style="margin-top:24px">
-        <li>El escáner facial y las fotos de etiquetas se procesan al instante y se descartan.
-        Lo único que se guarda es la lectura — nunca la imagen.</li>
-        <li>Tus datos viven en la Unión Europea.</li>
-        <li>Sin anuncios, sin rastreadores de terceros.</li>
-        <li>Puedes borrar tu cuenta desde la propia app, cuando quieras.</li>
+      <ul class="ways">
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5v14M7 5v14M11 5v14M15 5v14M19 5v14"/></svg>
+          </span>
+          <div><h3>El código de barras</h3>
+            <p>Apunta con la cámara y ya está. Si ese bote no lo conocemos todavía te lo decimos —
+              nunca nos inventamos una nota para salir del paso.</p></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          </span>
+          <div><h3>Su nombre</h3>
+            <p>Escribe la marca o el producto y elige de la lista. Útil cuando lo estás viendo en
+              una web y no tienes el bote en la mano.</p></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A2.5 2.5 0 015.5 6h1.7l1.2-1.8h6.2L15.8 6h2.7A2.5 2.5 0 0121 8.5v9A2.5 2.5 0 0118.5 20h-13A2.5 2.5 0 013 17.5z"/><circle cx="12" cy="13" r="3.4"/></svg>
+          </span>
+          <div><h3>Una foto a la letra pequeña</h3>
+            <p>Funciona <strong>aunque ese producto no esté en ninguna parte</strong>. Y antes de
+              darte nada te enseñamos lo que hemos leído, por si nos hemos colado.</p></div>
+        </li>
       </ul>
-      <div class="links-inline">
-        <a href="privacidad.html">Política de privacidad</a>
-        <a href="eliminar-cuenta.html">Cómo eliminar tu cuenta</a>
-      </div>
     </div>
-    <figure>
-      <div class="phone"><img src="assets/consent.webp" alt="El permiso del ciclo, pedido en la conversación" width="1080" height="2400" loading="lazy"></div>
-      <figcaption>El permiso, en la propia conversación: «Dato sensible — solo con tu permiso. Puedes decir que no y seguimos igual».</figcaption>
+    <figure class="shot rv">
+      <img src="assets/lupa.webp" alt="La pantalla de Lupa, con las opciones de escanear, foto de los ingredientes, medicamento y búsqueda por nombre" loading="lazy" decoding="async" width="330" height="734">
     </figure>
   </div>
 </section>
 
-<!-- ══ CIERRE ══ -->
-<section class="wrap closing rv">
-  <h2>Empieza en un minuto;<br>te conocemos poco a poco.</h2>
-  <span class="cta soon">
-    <svg class="play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-    Muy pronto en Google Play
-  </span>
-  <p class="contact">¿Preguntas? Escríbenos a <a href="mailto:maser@skinms.app">maser@skinms.app</a></p>
+<!-- ═══ TODO LO QUE MIRAMOS ════════════════════════════════════════════ -->
+<section class="band-quiet">
+  <div class="wrap">
+    <div class="rv">
+      <p class="kicker">Todo esto lo miramos antes de abrir la boca</p>
+      <h2>No es una nota. Es tu nota.</h2>
+    </div>
+
+    <div class="cols">
+      <div class="col rv">
+        <h3>De tu piel</h3>
+        <ul>
+          <li>Tu tipo de piel</li>
+          <li>Cómo está tu barrera</li>
+          <li>Lo que quieres arreglar: manchas, granos, rojeces, arrugas…</li>
+          <li>Tus alergias</li>
+          <li>Si estás embarazada o dando el pecho</li>
+          <li>Si vienes de un tratamiento reciente</li>
+        </ul>
+      </div>
+
+      <div class="col rv">
+        <h3>De tu vida</h3>
+        <ul>
+          <li>El clima de tu ciudad</li>
+          <li>El sol que hace hoy</li>
+          <li>El polen y la calidad del aire</li>
+          <li>Si sales a correr, a la piscina o al mar</li>
+          <li>Tu ciclo, si quieres contarlo</li>
+        </ul>
+      </div>
+
+      <div class="col rv">
+        <h3>De tus cosas</h3>
+        <ul>
+          <li>Lo que ya tienes en el baño, para no venderte dos veces lo mismo</li>
+          <li>Cuánto te gusta gastar</li>
+          <li>Las marcas que te gustan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout rv">
+      <p class="kicker">Y tres que no puntúan: mandan</p>
+      <p>Una alergia tuya, un embarazo o un tratamiento reciente <strong>bloquean el producto</strong>.
+        No le bajan la nota: la convierten en un no. Da igual lo bien que puntúe en todo lo demás,
+        y no hay conversación que lo cambie.</p>
+    </div>
+
+    <div class="proof rv">
+      <figure class="shot">
+        <img src="assets/veredicto.webp" alt="Ficha de un producto en SkinMs con un 81 por ciento de compatibilidad y el desglose de qué lo sube" loading="lazy" decoding="async" width="330" height="734">
+      </figure>
+      <blockquote>
+        <p>Y te enseñamos la cuenta entera: de dónde parte, qué le suma tu objetivo, qué le suma
+          el estado de tu barrera.</p>
+        <p class="quoted">«De 50&nbsp;% a 81&nbsp;%: eso es lo que mueven tus datos.»</p>
+        <p class="sub">Sin saber nada de ti, cualquier producto es un 50. El resto lo pones tú.</p>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EL CICLO ═══════════════════════════════════════════════════════ -->
+<section>
+  <div class="wrap split">
+    <div class="txt rv">
+      <p class="kicker">Si te apetece contarlo</p>
+      <h2>Tu piel no es la misma el día 3 que el día 20. Tu rutina tampoco.</h2>
+      <p class="lead" style="margin-top:22px">En los días en que tu piel viene más reactiva, tu plan
+        <strong>baja los activos fuertes y se centra en cuidar la barrera</strong>. Solo. Tú no tienes
+        que acordarte de nada ni llevar ninguna cuenta.</p>
+      <p class="lead" style="margin-top:16px">Y si no te apetece contarlo, no se te vuelve a
+        preguntar. Es una casilla aparte que enciendes y apagas cuando quieras.</p>
+    </div>
+    <figure class="shot rv">
+      <img src="assets/hoy.webp" alt="La pantalla de hoy en SkinMs, con los pasos de la rutina del día" loading="lazy" decoding="async" width="330" height="714">
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ LA RUTINA VIVA ═════════════════════════════════════════════════ -->
+<section class="band-quiet">
+  <div class="wrap split flip">
+    <div class="txt rv">
+      <p class="kicker">Cada día, y cada semana</p>
+      <h2>Ayer llovió y hoy hay sol. Tu rutina ya lo sabe.</h2>
+      <p class="lead" style="margin-top:22px">El tiempo que hace en tu ciudad, el sol, el polen, si
+        hoy sales a correr o te metes en el mar, y lo que de verdad tienes en el baño.</p>
+      <p class="lead" style="margin-top:16px">Tus activos fuertes <strong>descansan cuando les
+        toca</strong> — sin repetirse dos noches seguidas, sin pisarse entre ellos — y tú no tienes
+        que llevar el calendario en la cabeza.</p>
+    </div>
+    <figure class="shot rv">
+      <img src="assets/semana.webp" alt="La vista de la semana en SkinMs, con la constancia de cada día" loading="lazy" decoding="async" width="330" height="714">
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ MASER ══════════════════════════════════════════════════════════ -->
+<section>
+  <div class="wrap split">
+    <div class="txt rv">
+      <p class="kicker">Y si prefieres preguntar</p>
+      <h2>Alguien a quien no tienes que explicarle tu piel cada vez.</h2>
+      <p class="lead" style="margin-top:22px">Pregúntale lo que quieras — si un producto te va bien,
+        qué te falta hoy, o cualquier cosa que se te ocurra. <strong>Ya sabe quién eres</strong>: tu
+        objetivo, tus alergias, tu ciudad, lo que tienes en el baño.</p>
+      <p class="lead" style="margin-top:16px">Y si te pide hacer algo por ti, te lo pregunta antes.
+        Salvo una cosa: si le cuentas una alergia nueva, esa <strong>se guarda al momento</strong> —
+        tu seguridad no espera a una confirmación.</p>
+    </div>
+    <figure class="shot rv">
+      <img src="assets/maser.webp" alt="El chat de MaSer, que muestra que ya conoce el objetivo y los datos de la usuaria" loading="lazy" decoding="async" width="330" height="734">
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ PRESUPUESTO ════════════════════════════════════════════════════ -->
+<section class="band-quiet">
+  <div class="wrap narrow rv">
+    <p class="kicker">Tu presupuesto</p>
+    <h2>Lo caro no es mejor para tu cara. Sólo es más caro.</h2>
+    <p class="lead" style="margin-top:22px">Dinos cuánto te gusta gastarte en un bote y te decimos si
+      uno entra o no. Entre dos productos que le van <strong>igual de bien a tu piel</strong>, te
+      enseñamos antes el que te cabe.</p>
+    <p class="lead" style="margin-top:16px">Pero nunca te diremos que algo es bueno para ti porque
+      sea barato. Y si de un producto no sabemos el precio real, <strong>no nos inventamos que
+      encaja</strong>.</p>
+  </div>
+</section>
+
+<!-- ═══ DÓNDE COMPRARLO + LA PROMESA ══════════════════════════════════ -->
+<section>
+  <div class="wrap split flip">
+    <div class="txt rv">
+      <p class="kicker">Lo que te falta, y dónde</p>
+      <h2>Tu estante sabe lo que te falta antes que tú.</h2>
+      <p class="lead" style="margin-top:22px">Con lo que ya tienes y lo que buscas, te dice qué hueco
+        te queda por cubrir — y te propone opciones <strong>con su porcentaje para ti</strong>, no un
+        ranking de novedades.</p>
+      <p class="lead" style="margin-top:16px">Cuando conocemos el precio real de un bote, te lo
+        decimos. Estamos comparando precios en tiendas asociadas y sumamos más cada mes; si de un
+        producto todavía no lo sabemos, no nos lo inventamos.</p>
+    </div>
+    <figure class="shot rv">
+      <img src="assets/estante.webp" alt="El estante de SkinMs con productos recomendados, su porcentaje de compatibilidad y el botón de comprar" loading="lazy" decoding="async" width="330" height="734">
+    </figure>
+  </div>
+</section>
+
+<section class="band-quiet">
+  <div class="wrap">
+
+    <div class="pledge rv">
+      <p class="kicker">Por qué puedes fiarte de ese enlace</p>
+      <h2>Ganamos dinero si compras.<br>Por eso no nos dejamos tocar el orden.</h2>
+      <p>La recomendación se calcula <strong style="color:var(--on-emphasis)">antes</strong> de mirar
+        quién nos paga. Una tienda puede desempatar entre dos productos que ya habían empatado para
+        tu piel; jamás adelantar a uno que te venía mejor.</p>
+      <p class="rule">No es una política nuestra que alguien pueda cambiar en una reunión.
+        Está cerrado por dentro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRIVACIDAD ═════════════════════════════════════════════════════ -->
+<section>
+  <div class="wrap split">
+    <div class="txt rv">
+      <p class="kicker">Tu cara</p>
+      <h2>Se lee y se olvida. En el mismo segundo.</h2>
+      <p class="lead" style="margin-top:22px">Tu foto no se archiva en ningún sitio. Se lee, se queda
+        lo que dice de tu piel, y la imagen <strong>desaparece</strong> — también si algo va mal a
+        mitad.</p>
+      <p class="lead" style="margin-top:16px">Todo lo que nos cuentas puedes llevártelo o borrarlo
+        entero cuando quieras. Sin anuncios, sin rastreadores y sin vender tus datos a nadie.</p>
+    </div>
+    <figure class="shot rv">
+      <img src="assets/perfil.webp" alt="El perfil de SkinMs con el mapa de zonas de la cara y las lecturas de piel, sin la fotografía" loading="lazy" decoding="async" width="330" height="734">
+      <figcaption>De tu foto solo queda esto: el mapa de lo que dice tu piel.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═══ CIERRE ═════════════════════════════════════════════════════════ -->
+<section class="closing">
+  <div class="wrap rv">
+    <h2>Empieza en un minuto. Te conocemos poco a poco.</h2>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.skinsync.skinsync">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      <span>Descargar en Google Play</span>
+    </a>
+    <span class="cta-note">Gratis · en español · sin anuncios</span>
+  </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <p class="disclaimer"><em>«No diagnostica ni receta — lo cosmético lo cuido, lo médico te derivo.»</em><br>
-    Son las palabras de MaSer dentro de la app, y también nuestro límite: SkinMs no sustituye
-    el consejo de un profesional sanitario.</p>
+  <div class="wrap foot">
+    <a class="brand" href="/">
+      <span class="roundel" aria-hidden="true">Ms</span>
+      <b>SkinMs</b>
+    </a>
     <nav>
       <a href="privacidad.html">Privacidad</a>
-      <a href="eliminar-cuenta.html">Eliminar cuenta</a>
-      <a href="mailto:maser@skinms.app">Contacto</a>
+      <a href="eliminar-cuenta.html">Eliminar tu cuenta</a>
+      <a href="mailto:hola@skinms.app">Escríbenos</a>
     </nav>
-    <p>© 2026 SkinMs · Marta y Sergio</p>
+  </div>
+  <div class="wrap" style="margin-top:26px">
+    <p class="sub">SkinMs te ayuda a ordenar tu rutina de cosmética. No es un producto sanitario ni
+      sustituye a un profesional: ante un problema de piel, consulta con tu médico o tu farmacéutico.</p>
   </div>
 </footer>
 
 <script>
-/* ── la flor interactiva: 9 señales reales del motor, un pétalo cada una ── */
-const SIGNALS = [
-  ["tu objetivo",          "Acné, manchas, rojeces… el porqué de cada paso de tu rutina."],
-  ["tus alergias",         "Si un ingrediente choca contigo, queda vetado. Sin excepciones."],
-  ["tu barrera",           "Una piel castigada pide fórmulas que reparan, no que exigen."],
-  ["el clima de tu ciudad","El UV y la humedad de hoy entran en el cálculo de hoy."],
-  ["tu ciclo",             "Solo si decides compartirlo — y entonces el plan lo acompaña."],
-  ["tu deporte",           "Sudor, roce, sol: tu rutina se adapta a lo que haces."],
-  ["tu presupuesto",       "Las alternativas que te propone respetan lo que quieres gastar."],
-  ["tu estante",           "Lo que ya tienes cuenta: duplicados, huecos y conflictos."],
-  ["tu retrato",           "Las zonas de tu cara afinan la lectura. La foto nunca se guarda."],
-];
-const petalsG = document.getElementById("petals");
-const sigBox  = document.getElementById("signals");
-const sigLine = document.getElementById("sigline");
-const count   = document.getElementById("bloomcount");
-const stage   = document.getElementById("bloomstage");
-const verdict = document.getElementById("verdict");
-const hint    = document.getElementById("bloomhint");
-const on = new Set();
-
-SIGNALS.forEach(([name, line], i) => {
-  const p = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
-  p.setAttribute("rx", 26); p.setAttribute("ry", 62); p.setAttribute("cy", -72);
-  p.setAttribute("transform", `rotate(${i * 40})`);
-  p.classList.add("petal"); p.dataset.i = i;
-  p.addEventListener("click", () => toggle(i));
-  petalsG.appendChild(p);
-
-  const b = document.createElement("button");
-  b.className = "sig"; b.type = "button"; b.textContent = name;
-  b.setAttribute("aria-pressed", "false"); b.dataset.i = i;
-  b.addEventListener("click", () => toggle(i));
-  sigBox.appendChild(b);
-});
-
-function toggle(i){
-  const petal = petalsG.children[i], btn = sigBox.children[i];
-  const active = !on.has(i);
-  active ? on.add(i) : on.delete(i);
-  petal.classList.toggle("on", active);
-  btn.setAttribute("aria-pressed", String(active));
-  if (active) {
-    sigLine.innerHTML = `<em>${SIGNALS[i][0][0].toUpperCase() + SIGNALS[i][0].slice(1)}.</em> ${SIGNALS[i][1]}`;
+// Entrada suave por sección. Sin dependencias; si no hay soporte, todo queda visible.
+(function () {
+  var els = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
   }
-  count.textContent = `${on.size}/9`;
-  const bloomed = on.size === 9;
-  stage.classList.toggle("bloomed", bloomed);
-  verdict.classList.toggle("show", bloomed);
-  hint.style.opacity = bloomed ? "0" : "1";
-  if (bloomed) count.textContent = "✦";
-}
-
-/* primera señal encendida como invitación */
-toggle(0);
-
-/* el FAB de MaSer lleva a su sección */
-document.getElementById("fab").addEventListener("click",
-  () => document.getElementById("maser").scrollIntoView({behavior:"smooth"}));
-
-/* reveals al hacer scroll */
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
-}), {threshold:.12});
-document.querySelectorAll(".rv").forEach(el => io.observe(el));
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+  els.forEach(function (el) { io.observe(el); });
+})();
 </script>
 </body>
 </html>
